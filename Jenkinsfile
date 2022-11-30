@@ -5,7 +5,7 @@ node {
 		checkout scm
 	}
 	tools {
-        maven 'Mymaven'
+        maven 'mymaven'
     }
         stage('Build maven') {
             step {
