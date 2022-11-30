@@ -4,6 +4,7 @@ node {
 	stage('Clone repository') {
 		checkout scm
 	}
+	agent any
 	tools {
         maven 'mymaven'
     }
