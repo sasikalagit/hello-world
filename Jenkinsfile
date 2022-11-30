@@ -4,7 +4,16 @@ node {
 	stage('Clone repository') {
 		checkout scm
 	}
-
+	tools {
+        maven 'Mymaven'
+    }
+        stage('Build maven') {
+            step {
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/sasikalagit/hello-world.git']]])
+                sh 'mvn clean install'
+            }
+        }
+    
 	stage('Build image') {
 		app = docker.build("${dockerhubaccountid}/${application}:${BUILD_NUMBER}")
 	}
