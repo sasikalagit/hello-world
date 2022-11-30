@@ -1,13 +1,10 @@
 node {
+	def mymaven
 	def application = "helloworld"
 	def dockerhubaccountid = "isasalakr"
 	stage('Clone repository') {
 		checkout scm
 	}
-	agent any
-	tools {
-        maven 'mymaven'
-    }
         stage('Build maven') {
             step {
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/sasikalagit/hello-world.git']]])
