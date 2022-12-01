@@ -23,7 +23,7 @@ node {
 	}
 	
 	stage('Remove running container'){
-	       sh "docker rm -f \$(docker ps -a -f name=isasalakr/helloworld:* -q) || true"  
+	       sh "docker rm -f $(docker ps -aq)"  
 	       
         }
 
