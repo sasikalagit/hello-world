@@ -1,2 +1,3 @@
-FROM httpd:2.4
-COPY ./webapp/target/webapp.war /usr/local/apache2/htdocs/
+FROM tomcat:latest
+RUN cp -R  /usr/local/tomcat/webapps.dist/*  /usr/local/tomcat/webapps
+COPY /webapp/target/*.war /usr/local/tomcat/webapps/
